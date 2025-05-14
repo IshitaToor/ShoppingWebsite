@@ -9,6 +9,14 @@ class Product(db.Model):
     image = db.Column(db.String(255))
     description = db.Column(db.String(255))
     is_featured = db.Column(db.Boolean, default=False)
+    collection_id = db.Column(db.Integer, db.ForeignKey('collection.id'), nullable=True)  # Foreign key to Collection
+
+
+class Collection(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    description = db.Column(db.String(255), nullable=True)
+    image = db.Column(db.String(255), nullable=True)
 
 
 class Cart(db.Model):

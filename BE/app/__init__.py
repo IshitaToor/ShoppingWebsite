@@ -16,8 +16,9 @@ def create_app():
     migrate.init_app(app, db)
     
     
-    from app.routes import product_routes, cart_routes, order_routes
+    from app.routes import product_routes, collection_routes, cart_routes, order_routes
     app.register_blueprint(product_routes.bp)
+    app.register_blueprint(collection_routes.bp)
     app.register_blueprint(cart_routes.bp)
     app.register_blueprint(order_routes.bp)
 
