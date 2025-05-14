@@ -1,5 +1,6 @@
 from app import db
 from datetime import datetime
+import uuid
 
 
 class Product(db.Model):
@@ -28,11 +29,23 @@ class Cart(db.Model):
 
 
 class Order(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, nullable=False)
-    product_ids = db.Column(db.String(255), nullable=False)
+    __tablename__ = 'orders'
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    order_id = db.Column(db.BigInteger, unique=True, nullable=False, default=lambda: uuid.uuid4().int >> 64)
+    first_name = db.Column(db.String(100), nullable=False)
+    last_name = db.Column(db.String(100), nullable=False)
+    email = db.Column(db.String(255), nullable=False)
+    address = db.Column(db.String(255), nullable=False)
+    city = db.Column(db.String(100), nullable=False)
+    state = db.Column(db.String(100), nullable=False)
+    zip_code = db.Column(db.String(20), nullable=False)
+    country = db.Column(db.String(100), nullable=False)
+    payment_status = db.Column(db.String(50), default='Unpaid')
+    cart_items = db.Column(db.Text, nullable=False)
     total_price = db.Column(db.Float, nullable=False)
-    status = db.Column(db.String(50), default='Pending')
+    date_created = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
+    del_date = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
 
 
 class Newsletter(db.Model):

@@ -4,56 +4,56 @@
   <meta charset="UTF-8">
   <title>Checkout</title>
   <link rel="stylesheet" href="checkout.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <main class="checkout-page">
     <section class="checkout-form">
       <h2>Checkout</h2>
-      <form action="thankyou.html">
+      <form id="checkout-form">
         <h3>Shipping Information</h3>
         <div class="form-row">
-          <input type="text" placeholder="First Name" required>
-          <input type="text" placeholder="Last Name" required>
+          <input type="text" placeholder="First Name" id="first-name" required>
+          <input type="text" placeholder="Last Name" id="last-name" required>
         </div>
-        <input type="email" placeholder="Email" required>
-        <input type="text" placeholder="Address" required>
+        <input type="email" placeholder="Email" id="email" required>
+        <input type="text" placeholder="Address" id="address" required>
         <div class="form-row">
-          <input type="text" placeholder="City" required>
-          <input type="text" placeholder="State" required>
-          <input type="text" placeholder="ZIP Code" required>
+          <input type="text" placeholder="City" id="city" required>
+          <input type="text" placeholder="State" id="state" required>
+          <input type="text" placeholder="ZIP Code" id="zip-code" required>
         </div>
-        <select required>
-          <option>United States</option>
+        <select required id="country">
+          <option value="" disabled selected>Select Country</option>
+          <option value="us">United States</option>
         </select>
 
         <h3>Payment Information</h3>
-        <input type="text" placeholder="Name on Card" required>
-        <input type="text" placeholder="Card Number" required>
+        <input type="text" placeholder="Name on Card" id="card-name" required>
+        <input type="text" placeholder="Card Number" id="card-number" required>
         <div class="form-row">
-          <input type="text" placeholder="MM/YY" required>
-          <input type="text" placeholder="CVC" required>
+          <input type="text" placeholder="MM/YY" id="expiry-date" required>
+          <input type="text" placeholder="CVV" id="cvv" required>
         </div>
-        <button type="submit" class="checkout-cart-button full">Pay $59.99</button>
+        <button type="submit" class="checkout-cart-button full" id="checkout-cart">Pay INR 0 and Place your order</button>
       </form>
     </section>
 
     <aside class="checkout-cart-summary">
-      <h3>Order Summary</h3>
-      <div class="summary-product">
-        <img src="images/denim-jeans.webp" alt="Slim Fit Jeans">
-        <div>
-          <p><strong>Slim Fit Jeans</strong></p>
-          <p>Qty: 1</p>
-          <p>Size: 34</p>
-          <p>Color: Gray</p>
+      <div class="order-summary">
+        <h2>Order Summary</h2>
+        <div class="summary-details">
+            <p class="summary-details-para">Total Items: <span id="total-items">0</span></p>
+            <p class="summary-details-para">Subtotal: <span id="sub-total-amount">0</span></p>
+            <p class="summary-details-para">Shipping: <span id="shipping-amount">0</span></p>
         </div>
-        <p>$59.99</p>
+        <p class="summary-details-para">Total Amount: <span id="total-amount">0</span></p>
       </div>
-      <p>Subtotal: <span>$59.99</span></p>
-      <p>Shipping: <span>Free</span></p>
-      <p>Taxes: <span>Calculated at checkout</span></p>
-      <p>Total: <strong>$59.99</strong></p>
     </aside>
   </main>
+  <script src="navbar.js"></script>
+  <script src="footer.js"></script>
+  <script src="checkout.js"></script>
+
 </body>
 </html>
