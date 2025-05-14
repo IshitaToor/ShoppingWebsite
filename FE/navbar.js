@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <ul class="nav-links">
           <li><a href="index.html">Home</a></li>
           <li><a href="shop.html">Shop</a></li>
-          <li><a href="collection.html">Collection</a></li>
+          <li><a href="index.html#collections-container-section">Collection</a></li>
           <li><a href="about.html">About Us</a></li>
           <li><a href="contact.html">Contact Us</a></li>
         </ul>
