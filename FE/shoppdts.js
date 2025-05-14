@@ -4,6 +4,10 @@ let selectedCategories = [];
 const grid = document.getElementById("product-grid");
 const productCount = document.getElementById("product-count");
 const sortSelect = document.getElementById("sort-select");
+const titleElement = document.querySelector(".title");
+
+const params = new URLSearchParams(window.location.search);
+const collectionId = params.get("collection_id");
 
 async function fetchProducts() {
   try {
@@ -12,10 +16,31 @@ async function fetchProducts() {
       throw new Error("Failed to fetch products");
     }
     products = await response.json();
+
+    // Filter products by collection_id if present
+    if (collectionId) {
+      products = products.filter(product => product.collection_id === parseInt(collectionId));
+      await fetchCollectionName(collectionId);
+    }
+
     renderProducts(products);
   } catch (error) {
     console.error("Error fetching products:", error);
     grid.innerHTML = "<p>Failed to load products. Please try again later.</p>";
+  }
+}
+
+async function fetchCollectionName(collectionId) {
+  try {
+    const response = await fetch(`http://127.0.0.1:5000/api/collections/${collectionId}`);
+    if (!response.ok) {
+      throw new Error("Failed to fetch collection name");
+    }
+    const collection = await response.json();
+    titleElement.textContent = `Shop for ${collection.name}`;
+  } catch (error) {
+    console.error("Error fetching collection name:", error);
+    titleElement.textContent = "Shop All Products";
   }
 }
 

@@ -25,7 +25,7 @@ function renderCollections(collections) {
     div.innerHTML = `
       <div class="image-container">
         <img src="${collection.image}" alt="${collection.name}" />
-        <a href="collection.html?id=${collection.id}" class="explore-overlay">Explore Now</a>
+        <a href="shop.html?collection_id=${collection.id}" class="explore-overlay">Explore Now</a>
       </div>
       <h3>${collection.name}</h3>
       <p>${collection.description}</p>

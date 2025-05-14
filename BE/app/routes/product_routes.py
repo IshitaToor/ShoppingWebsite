@@ -13,7 +13,8 @@ def get_products():
         'price': p.price,
         'description': p.description,
         'image': p.image,
-        'category': p.category
+        'category': p.category,
+        'collection_id': p.collection_id
     } for p in products])
 
 
