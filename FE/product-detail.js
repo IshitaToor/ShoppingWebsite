@@ -27,6 +27,7 @@ document.getElementById("decrease").addEventListener("click", () => {
 });
 
 // Size selection logic
+let selectedSize = null;
 const sizeButtons = document.querySelectorAll(".size-btn");
 sizeButtons.forEach(button => {
   button.addEventListener("click", () => {
@@ -34,5 +35,41 @@ sizeButtons.forEach(button => {
     sizeButtons.forEach(btn => btn.classList.remove("active"));
     // Add 'active' to the clicked one
     button.classList.add("active");
+    selectedSize = button.textContent;
   });
 });
+
+// Add to Cart functionality
+document.querySelector(".add-to-cart-btn").addEventListener("click", () => {
+  if (product) {
+    if (!selectedSize) {
+      alert("Please select a size before adding to the cart.");
+      return;
+    }
+
+    addToCart(product.id, product.name, product.price, product.image, quantity, selectedSize);
+    updateCartCount();
+  }
+});
+
+function addToCart(id, name, price, image, quantity, size) {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const existingItem = cart.find(item => item.id === id && item.size === size);
+
+  if (existingItem) {
+    existingItem.quantity += quantity;
+  } else {
+    cart.push({ id, name, price, image, quantity, size });
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+function updateCartCount() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+  document.getElementById("cart-count").textContent = cartCount;
+}
+
+// Initialize cart count on page load
+updateCartCount();

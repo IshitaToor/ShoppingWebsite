@@ -33,24 +33,14 @@ function renderProducts(items) {
       <h4>${product.name}</h4>
       <p>INR ${product.price}</p>
       <p style="font-size: 0.8rem;">${product.description}</p>
-      <button class="add-to-cart" data-id="${product.id}">Add to Cart</button>
     `;
 
     // Add click event to the entire product card
     div.addEventListener("click", (e) => {
-      if (!e.target.classList.contains("add-to-cart")) {
-        const id = div.getAttribute("data-id");
-        const selectedProduct = products.find(product => product.id === parseInt(id));
-        localStorage.setItem("selectedProduct", JSON.stringify(selectedProduct));
-        window.location.href = `pdtdetailpg.html?id=${id}`;
-      }
-    });
-
-    // Add click event to Add to Cart button only
-    div.querySelector(".add-to-cart").addEventListener("click", (e) => {
-      e.stopPropagation(); // Prevent triggering parent click
-      const productId = e.target.getAttribute("data-id");
-      addToCart(productId);
+      const id = div.getAttribute("data-id");
+      const selectedProduct = products.find(product => product.id === parseInt(id));
+      localStorage.setItem("selectedProduct", JSON.stringify(selectedProduct));
+      window.location.href = `pdtdetailpg.html?id=${id}`;
     });
 
     grid.appendChild(div);
@@ -84,11 +74,6 @@ document.querySelectorAll(".category-filter").forEach(cb => {
 sortSelect.addEventListener("change", () => {
   renderProducts(getFilteredProducts());
 });
-
-function addToCart(productId) {
-  console.log("Product added to cart:", productId);
-  // You can extend this for actual cart logic
-}
 
 // Initial rendering
 fetchProducts();
