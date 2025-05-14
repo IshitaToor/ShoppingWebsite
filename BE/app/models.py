@@ -1,4 +1,5 @@
 from app import db
+from datetime import datetime
 
 
 class Product(db.Model):
@@ -32,3 +33,11 @@ class Order(db.Model):
     product_ids = db.Column(db.String(255), nullable=False)
     total_price = db.Column(db.Float, nullable=False)
     status = db.Column(db.String(50), default='Pending')
+
+
+class Newsletter(db.Model):
+    __tablename__ = 'newsletter'
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(255), unique=True, nullable=False)
+    date_subscribed = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
+

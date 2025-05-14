@@ -232,13 +232,12 @@ body {
   .footer {
     background-color: #f9fafb;
     margin-top: 5rem;
-    padding: 3rem 1rem;
+    padding: 15px 30px;
     font-family: 'Inter', sans-serif;
   }
   
   .footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
+    width: 100%;
   }
   
   .footer-grid {
@@ -789,7 +788,7 @@ body {
   
   .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1rem;
   }
   
@@ -995,7 +994,7 @@ body {
 /* Collection Card */
 .collection-card {
   width: 100%; /* Ensure cards take full width of their grid cell */
-  max-width: 300px; /* Set a maximum width for cards */
+  max-width: 325px; /* Set a maximum width for cards */
   border: 1px solid #ddd;
   border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
