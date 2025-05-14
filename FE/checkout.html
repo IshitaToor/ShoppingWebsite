@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Checkout</title>
+  <link rel="stylesheet" href="checkout.css">
+</head>
+<body>
+  <main class="checkout-page">
+    <section class="checkout-form">
+      <h2>Checkout</h2>
+      <form action="thankyou.html">
+        <h3>Shipping Information</h3>
+        <div class="form-row">
+          <input type="text" placeholder="First Name" required>
+          <input type="text" placeholder="Last Name" required>
+        </div>
+        <input type="email" placeholder="Email" required>
+        <input type="text" placeholder="Address" required>
+        <div class="form-row">
+          <input type="text" placeholder="City" required>
+          <input type="text" placeholder="State" required>
+          <input type="text" placeholder="ZIP Code" required>
+        </div>
+        <select required>
+          <option>United States</option>
+        </select>
+
+        <h3>Payment Information</h3>
+        <input type="text" placeholder="Name on Card" required>
+        <input type="text" placeholder="Card Number" required>
+        <div class="form-row">
+          <input type="text" placeholder="MM/YY" required>
+          <input type="text" placeholder="CVC" required>
+        </div>
+        <button type="submit" class="checkout-cart-button full">Pay $59.99</button>
+      </form>
+    </section>
+
+    <aside class="checkout-cart-summary">
+      <h3>Order Summary</h3>
+      <div class="summary-product">
+        <img src="images/denim-jeans.webp" alt="Slim Fit Jeans">
+        <div>
+          <p><strong>Slim Fit Jeans</strong></p>
+          <p>Qty: 1</p>
+          <p>Size: 34</p>
+          <p>Color: Gray</p>
+        </div>
+        <p>$59.99</p>
+      </div>
+      <p>Subtotal: <span>$59.99</span></p>
+      <p>Shipping: <span>Free</span></p>
+      <p>Taxes: <span>Calculated at checkout</span></p>
+      <p>Total: <strong>$59.99</strong></p>
+    </aside>
+  </main>
+</body>
+</html>
