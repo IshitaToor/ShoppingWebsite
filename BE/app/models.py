@@ -8,6 +8,7 @@ class Product(db.Model):
     category = db.Column(db.String(50), nullable=False)
     image = db.Column(db.String(255))
     description = db.Column(db.String(255))
+    is_featured = db.Column(db.Boolean, default=False)
 
 
 class Cart(db.Model):

@@ -24,35 +24,8 @@
             <h2>Featured Products</h2>
             <p>Our most popular items, handpicked for you.</p>
           </div>
-          <div class='product-grid'>
-            <div class='product-card'>
-              <img src='https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80' alt='Classic White T-Shirt' />
-              <h3>Classic White T-Shirt</h3>
-              <p>INR 450</p>
-              <p>A timeless white t-shirt made with 100% organic cotton. Perfect for any casual outfit.</p>
-              <button onclick="addToCart('1', 'Classic White T-Shirt', 450)">Add to Cart</button>
-            </div>
-            <div class='product-card'>
-              <img src='https://images.unsplash.com/photo-1541099649105-f69ad21f3246?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80' alt='Slim Fit Jeans' />
-              <h3>Slim Fit Jeans</h3>
-              <p>INR 600</p>
-              <p>Classic slim fit jeans with a modern cut. Made with premium denim for comfort and durability.</p>
-              <button onclick="addToCart('2', 'Slim Fit Jeans', 600)">Add to Cart</button>
-            </div>
-            <div class='product-card'>
-              <img src='oversized.webp' alt='Oversized Hoodie' />
-              <h3>Oversized Hoodie</h3>
-              <p>INR 550</p>
-              <p>A perfect blend of comfort and style. Made with premium material for comfort.</p>
-              <button onclick="addToCart('3', 'Oversized Hoodie', 550)">Add to Cart</button>
-          </div>
-          <div class='product-card'>
-              <img src='faux leather.jpg' alt='Faux Leather Skirt' />
-              <h3>Faux Leather Skirt</h3>
-              <p>INR 700</p>
-              <p>Ideal for casual or formal occasions</p>
-              <button onclick="addToCart('4', 'Faux Leather Skirt', 700)">Add to Cart</button>
-          </div>
+          <div id="featured-products" class="product-grid">
+            <!-- Products will be dynamically loaded here -->
           </div>
           <div class="section-footer">
             <a href="shop.html" class="btn-outline">View All Products</a>
@@ -105,7 +78,7 @@
           </section>
       
         <script src="navbar.js"></script>  
-        <script src="app.js"></script>
+        <script src="featured-products.js"></script>
       </body>      
 
 

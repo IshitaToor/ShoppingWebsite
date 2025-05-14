@@ -15,3 +15,16 @@ def get_products():
         'image': p.image,
         'category': p.category
     } for p in products])
+
+
+@bp.route('/featured', methods=['GET'])
+def get_featured_products():
+    products = Product.query.filter_by(is_featured=True).all()
+    return jsonify([{
+        'id': p.id,
+        'name': p.name,
+        'price': p.price,
+        'description': p.description,
+        'image': p.image,
+        'category': p.category
+    } for p in products])
