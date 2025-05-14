@@ -93,10 +93,41 @@
     </div>
   </section>
   <script>
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
+    document.getElementById('contactForm').addEventListener('submit', async function (e) {
       e.preventDefault();
-      alert("Thanks for contacting us! We'll get back to you soon.");
-      this.reset();
+
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const subject = document.getElementById('subject').value;
+      const message = document.getElementById('message').value;
+
+      const payload = {
+        name: name,
+        email: email,
+        subject: subject,
+        message: message,
+      };
+  
+      try {
+        const response = await fetch('http://127.0.0.1:5000/api/contactus/message', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload),
+        });
+  
+        if (response.ok) {
+          alert("Thanks for contacting us! We'll get back to you soon.");
+          this.reset();
+        } else {
+          const errorData = await response.json();
+          alert(`Error: ${errorData.error || 'Something went wrong'}`);
+        }
+      } catch (error) {
+        console.error('Error submitting the form:', error);
+        alert('An error occurred while submitting the form. Please try again later.');
+      }
     });
   </script>
 

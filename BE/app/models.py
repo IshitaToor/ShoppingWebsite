@@ -54,3 +54,13 @@ class Newsletter(db.Model):
     email = db.Column(db.String(255), unique=True, nullable=False)
     date_subscribed = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
 
+
+class Message(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.String(100), nullable=False)
+    email = db.Column(db.String(120), nullable=False)
+    subject = db.Column(db.String(200), nullable=False)
+    message = db.Column(db.Text, nullable=False)
+    date_created = db.Column(db.DateTime, default=datetime.utcnow)
+
+    
