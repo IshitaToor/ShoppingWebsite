@@ -20,9 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
           <div class="footer-section">
             <h3 class="footer-heading">Help</h3>
             <ul class="footer-links">
-              <li><a href="/shipping">Shipping</a></li>
-              <li><a href="/returns">Returns</a></li>
-              <li><a href="/contact">Contact Us</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
             </ul>
           </div>
 
