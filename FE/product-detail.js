@@ -67,9 +67,11 @@ function addToCart(id, name, price, image, quantity, size) {
 
 function updateCartCount() {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
-  document.getElementById("cart-count").textContent = cartCount;
+  const cartCount = cart.length;
+  if (document.getElementById("cart-count")) document.getElementById("cart-count").textContent = cartCount;
 }
 
-// Initialize cart count on page load
-updateCartCount();
+document.addEventListener("DOMContentLoaded", () => {
+  // Initialize cart count on page load
+  updateCartCount();
+});
