@@ -32,7 +32,7 @@ function renderProducts(items) {
       <img src="${product.image}" alt="${product.name}" />
       <h4>${product.name}</h4>
       <p>INR ${product.price}</p>
-      <p style="font-size: 0.8rem;">${product.category}</p>
+      <p style="font-size: 0.8rem;">${product.description}</p>
       <button class="add-to-cart" data-id="${product.id}">Add to Cart</button>
     `;
 
@@ -40,6 +40,8 @@ function renderProducts(items) {
     div.addEventListener("click", (e) => {
       if (!e.target.classList.contains("add-to-cart")) {
         const id = div.getAttribute("data-id");
+        const selectedProduct = products.find(product => product.id === parseInt(id));
+        localStorage.setItem("selectedProduct", JSON.stringify(selectedProduct));
         window.location.href = `pdtdetailpg.html?id=${id}`;
       }
     });
