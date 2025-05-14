@@ -3,12 +3,20 @@ from app.models import Product
 
 app = create_app()
 
+products = [
+    {"id": 1, "name": "White T-Shirt", "price": 450, "category": "Tops", "image": "images/white-tshirt.webp", "description": "A classic white t-shirt made from 100% cotton."},
+    {"id": 2, "name": "Denim Jeans", "price": 700, "category": "Bottoms", "image": "images/denim-jeans.webp", "description": "Stylish and durable denim jeans for everyday wear."},
+    {"id": 3, "name": "Formal Blazer", "price": 1400, "category": "Formal", "image": "images/formal-blazer.webp", "description": "A sleek formal blazer perfect for office or events."},
+    {"id": 4, "name": "Running Shoes", "price": 800, "category": "Shoes", "image": "images/running-shoes.webp", "description": "Comfortable running shoes for all your fitness needs."},
+    {"id": 5, "name": "Sunglasses", "price": 500, "category": "Accessories", "image": "images/sunglasses.webp", "description": "Stylish sunglasses to protect your eyes from the sun."},
+    {"id": 6, "name": "Oversized", "price": 550, "category": "Hoodies", "image": "images/over-sized.webp", "description": "A cozy oversized hoodie for casual outings."},
+    {"id": 7, "name": "Faux Leather Skirt", "price": 700, "category": "Outwear", "image": "images/faux-leather.jpg", "description": "A chic faux leather skirt for a bold fashion statement."},
+]
+
+
 with app.app_context():
-    product1 = Product(name="T-Shirt", price=19.99, description="Comfortable cotton t-shirt", image_url="tshirt.jpg")
-    product2 = Product(name="Jeans", price=49.99, description="Stylish denim jeans", image_url="jeans.jpg")
-    product3 = Product(name="Sneakers", price=79.99, description="Durable running sneakers", image_url="sneakers.jpg")
-
-    db.session.add_all([product1, product2, product3])
+    db.session.query(Product).delete()
+    for product in products:
+        db.session.add(Product(**product))
     db.session.commit()
-
     print("Database seeded successfully!")
